@@ -1,13 +1,11 @@
-import Image from 'next/image';
-import { Open_Sans } from 'next/font/google';
 import PorfileCard from '@/components/PorfileCard';
-
-const openSans = Open_Sans({ weight: '800', subsets: ['latin'] });
+import FeaturedPosts from '@/components/posts/FeaturedPosts';
 
 export default function Home() {
   return (
     <section>
       <PorfileCard />
+      <FeaturedPosts />
     </section>
   );
 }
