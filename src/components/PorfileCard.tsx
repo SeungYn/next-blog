@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function PorfileCard() {
   return (
-    <section className='flex flex-col justify-center items-center gap-2'>
+    <section className='flex flex-col justify-center items-center gap-2 py-8'>
       <Image
         src={img}
         className='rounded-full'
