@@ -1,12 +1,13 @@
 import Image from 'next/image';
-import { Inter } from 'next/font/google';
+import { Open_Sans } from 'next/font/google';
+import PorfileCard from '@/components/PorfileCard';
 
-const inter = Inter({ subsets: ['latin'] });
+const openSans = Open_Sans({ weight: '800', subsets: ['latin'] });
 
 export default function Home() {
   return (
-
-      <section></section>
-
+    <section>
+      <PorfileCard />
+    </section>
   );
 }
