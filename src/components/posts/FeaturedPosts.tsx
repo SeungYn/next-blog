@@ -1,10 +1,11 @@
 import PostCard from './PostCard';
 import img from 'public/react.png';
+import Subtitle from './Subtitle';
 
 export default function FeaturedPosts() {
   return (
     <section>
-      <h1 className='text-2xl'>Featured Posts</h1>
+      <Subtitle title='Featured Posts' />
       <div className='grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'>
         <PostCard
           imgSrc={img.src}
