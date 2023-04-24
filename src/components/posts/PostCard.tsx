@@ -11,7 +11,7 @@ export default function PostCard(props: Props) {
     post: { description, title, date, path, category, featured },
     height,
   } = props;
-  console.log(description);
+
   return (
     <article
       className={`flex flex-col items-center w-full h-${height} shadow-md rounded-lg relative`}

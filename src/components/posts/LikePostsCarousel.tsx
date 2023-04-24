@@ -4,6 +4,7 @@ import 'react-multi-carousel/lib/styles.css';
 import PostCard from './PostCard';
 import img from 'public/react.png';
 import { useEffect, useState } from 'react';
+import { Post } from '@/service/posts';
 
 const responsive = {
   superLargeDesktop: {
@@ -24,7 +25,12 @@ const responsive = {
     items: 1,
   },
 };
-export default function LikePostsCarousel() {
+
+interface Props {
+  posts: Post[];
+}
+
+export default function LikePostsCarousel({ posts }: Props) {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setLoading(false);
@@ -34,46 +40,12 @@ export default function LikePostsCarousel() {
   return (
     <div>
       <Carousel responsive={responsive} infinite={true} autoPlay={true}>
-        <div>
-          <PostCard
-            imgSrc={img.src}
-            title='text'
-            date='2023-04-10'
-            content='노드노드노드'
-            category='backend'
-            height={96}
-          />
-        </div>
-        <div>
-          <PostCard
-            imgSrc={img.src}
-            title='text'
-            date='2023-04-10'
-            content='노드노드노드'
-            category='backend'
-            height={96}
-          />
-        </div>
-        <div>
-          <PostCard
-            imgSrc={img.src}
-            title='text'
-            date='2023-04-10'
-            content='노드노드노드'
-            category='backend'
-            height={96}
-          />
-        </div>
-        <div>
-          <PostCard
-            imgSrc={img.src}
-            title='text'
-            date='2023-04-10'
-            content='노드노드노드'
-            category='backend'
-            height={96}
-          />
-        </div>
+        {posts.map((item) => (
+          <div key={item.date}>
+            {' '}
+            <PostCard height={96} post={item} />
+          </div>
+        ))}
       </Carousel>
     </div>
   );
