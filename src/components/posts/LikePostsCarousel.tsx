@@ -24,7 +24,7 @@ const responsive = {
     items: 1,
   },
 };
-export default function LikeProtsCarousel() {
+export default function LikePostsCarousel() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setLoading(false);
