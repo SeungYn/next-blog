@@ -1,7 +1,12 @@
 import Navbar from '@/components/globalNav/Navbar';
 import './globals.css';
 import { Open_Sans } from 'next/font/google';
+import { register } from 'swiper/element/bundle';
+import Footer from '@/components/Footer';
+
 const openSans = Open_Sans({ weight: '500', subsets: ['latin'] });
+//swiper 초기화
+register();
 
 export const metadata = {
   title: 'Create Next App',
@@ -19,6 +24,7 @@ export default function RootLayout({
         <main className='w-full max-w-screen-2xl h-screen mx-auto px-4'>
           <Navbar />
           {children}
+          <Footer />
         </main>
       </body>
     </html>
