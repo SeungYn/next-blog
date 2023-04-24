@@ -2,7 +2,7 @@ import Image from 'next/image';
 import img from '/public/react.png';
 import Link from 'next/link';
 
-export default function PorfileCard() {
+export default function ProfileCard() {
   return (
     <section className='flex flex-col justify-center items-center gap-2 py-8'>
       <Image
