@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang='ko' className={openSans.className}>
       <body>
-        <main className='w-full max-w-screen-2xl h-screen mx-auto px-4'>
+        <main className='w-full max-w-screen-2xl h-screen mx-auto px-4 relative overflow-auto flex flex-col'>
           <Navbar />
           {children}
           <Footer />
