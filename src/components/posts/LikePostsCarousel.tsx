@@ -41,8 +41,7 @@ export default function LikePostsCarousel({ posts }: Props) {
     <div>
       <Carousel responsive={responsive} infinite={true} autoPlay={true}>
         {posts.map((item) => (
-          <div key={item.date}>
-            {' '}
+          <div key={item.date} className='pr-2'>
             <PostCard height={96} post={item} />
           </div>
         ))}
