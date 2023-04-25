@@ -21,7 +21,7 @@ const descriptionArr = [
 
 export default function About() {
   return (
-    <section className=''>
+    <section className='grow'>
       <ProfileCard />
       <div className='p-12 bg-slate-100 rounded-2xl'>
         {descriptionArr.map((item) => (

@@ -17,7 +17,7 @@ export default function PostCard(props: Props) {
       className={`flex flex-col items-center w-full h-${height} shadow-md rounded-lg relative`}
     >
       <div className='w-full h-4/6 relative'>
-        <Image src={`/image/${path}.png`} alt='포스트이미지' fill={true} />
+        <Image src={`/image/${path}.png`} alt='포스트이미지' fill />
       </div>
       <div className='p-2 flex flex-col justify-center items-center relative w-full gap-2'>
         <p className='opacity-50 self-end'>{date}</p>

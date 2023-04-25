@@ -1,13 +1,18 @@
 import path from 'path';
 import { promises as fs } from 'fs';
+import { getPosts } from '@/service/posts';
+import FilteredPosts from '@/components/posts/FilteredPosts';
 
-export default function Posts() {
-  return <section className='h-full'>1</section>;
-}
+export default async function PostsPage() {
+  const posts = await getPosts();
+  const category = [
+    ...new Set(posts.map((item) => item.category)),
+    'All posts',
+  ];
 
-export async function generateStaticParams() {
-  const dataPath = path.join(process.cwd(), 'data', 'posts.json');
-  const data = await fs.readFile(dataPath);
-  console.log(data);
-  return;
+  return (
+    <section className='flex-grow'>
+      <FilteredPosts posts={posts} category={category} />
+    </section>
+  );
 }
