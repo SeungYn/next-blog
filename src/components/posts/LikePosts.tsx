@@ -7,7 +7,8 @@ interface Props {
   posts: Post[];
 }
 
-export default function LikePosts({ posts }: Props) {
+export default async function LikePosts() {
+  const posts = await getPosts();
   return (
     <section className='overflow-scroll'>
       <Subtitle title='You may like' />
