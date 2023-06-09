@@ -3,6 +3,7 @@ import { Post } from '@/service/posts';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
+
 interface Props {
   post: Post;
   height: 96 | 64;
