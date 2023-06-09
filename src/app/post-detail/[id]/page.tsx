@@ -5,6 +5,8 @@ import MarkDownView from '@/components/posts/MarkDownView';
 import Image from 'next/image';
 import { getPostById, getPosts, getPrevNextPostIndex } from '@/service/posts';
 import PrevNextPostCard from '@/components/posts/PrevNextPostCard';
+import PrevNextPostCardContainer from '@/components/posts/PrevNextPostCardContainer';
+import AdjacentPostCard from '@/components/posts/AdjacentPostCard';
 
 interface Props {
   params: {
@@ -19,7 +21,7 @@ export default async function page({ params: { id } }: Props) {
   if (!data) notFound();
 
   return (
-    <section className='grow rounded-2xl bg-gray-100 shadow-lg m-4'>
+    <section className='bg-gray-100 shadow-lg m-4 flex flex-col'>
       <Image
         className='w-full h-1/5 max-h-[500px]'
         src={`/image/${id}.png`}
@@ -31,16 +33,12 @@ export default async function page({ params: { id } }: Props) {
       <p className='text-xl font-bold'>{data.description}</p>
       <div className='w-full border-solid border-2 border-sky-600 mt-4 mb-8' />
       <MarkDownView content={data.content} />
-      <div>
-        {prevPost && (
-          <PrevNextPostCard
-            title={prevPost.title}
-            description={prevPost.description}
-            direction='prev'
-            path={prevPost.path}
-          />
-        )}
-      </div>
+      {/* <PrevNextPostCardContainer prevPost={prevPost} nextPost={nextPost} /> */}
+
+      <section className='flex shadow-md'>
+        {prevPost && <AdjacentPostCard post={prevPost} type='prev' />}
+        {nextPost && <AdjacentPostCard post={nextPost} type='next' />}
+      </section>
     </section>
   );
 }

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 
 // type Props = {
@@ -10,14 +11,22 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 type PrevNextPostCardType = {
   path: string;
   children: React.ReactNode;
+  direction: 'prev' | 'next';
 };
 
 export default function PrevNextPostCard({
   path,
   children,
+  direction,
 }: PrevNextPostCardType) {
+  console.log(`/image/${path}.png`);
   return (
-    <div className={`w-full h-full bg-[url('/image/${path}.png')]`}>
+    <div
+      className={`w-full h-full bg-[url('/image/${path}.png')] bg-no-repeat bg-cover flex items-center p-4 ${
+        direction === 'next' ? 'justify-end' : ''
+      } `}
+    >
+      {/* <Image width={100} height={100} src={`/image/${path}.png`} alt='123' /> */}
       {children}
     </div>
   );
@@ -32,9 +41,9 @@ type ArrowIconType = {
 
 function ArrowIcon({ direction }: ArrowIconType) {
   return direction === 'prev' ? (
-    <AiOutlineArrowLeft />
+    <AiOutlineArrowLeft size={60} color='yellow' />
   ) : (
-    <AiOutlineArrowRight />
+    <AiOutlineArrowRight size={60} color='yellow' />
   );
 }
 
@@ -45,8 +54,8 @@ type ContentType = {
 
 function Content({ title, description }: ContentType) {
   return (
-    <div>
-      <h3>{title}</h3>
+    <div className='flex flex-col items-center w-full text-white'>
+      <h3 className='text-xl font-bold'>{title}</h3>
       <p>{description}</p>
     </div>
   );

@@ -46,7 +46,7 @@ export async function getPrevNextPostIndex(id: string) {
   if (nextIndex === posts.length) nextIndex = -1;
 
   return [
-    prevIndex === -1 ? null : posts[prevIndex],
-    nextIndex === -1 ? null : posts[nextIndex],
+    prevIndex === -1 ? undefined : posts[prevIndex],
+    nextIndex === -1 ? undefined : posts[nextIndex],
   ];
 }
