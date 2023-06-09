@@ -3,7 +3,8 @@ import path from 'path';
 import { notFound } from 'next/navigation';
 import MarkDownView from '@/components/posts/MarkDownView';
 import Image from 'next/image';
-import { getPostById, getPosts } from '@/service/posts';
+import { getPostById, getPosts, getPrevNextPostIndex } from '@/service/posts';
+import PrevNextPostCard from '@/components/posts/PrevNextPostCard';
 
 interface Props {
   params: {
@@ -13,7 +14,8 @@ interface Props {
 
 export default async function page({ params: { id } }: Props) {
   const data = await getPostById(id);
-  console.log(data);
+  const [prevPost, nextPost] = await getPrevNextPostIndex(id);
+
   if (!data) notFound();
 
   return (
@@ -29,6 +31,16 @@ export default async function page({ params: { id } }: Props) {
       <p className='text-xl font-bold'>{data.description}</p>
       <div className='w-full border-solid border-2 border-sky-600 mt-4 mb-8' />
       <MarkDownView content={data.content} />
+      <div>
+        {prevPost && (
+          <PrevNextPostCard
+            title={prevPost.title}
+            description={prevPost.description}
+            direction='prev'
+            path={prevPost.path}
+          />
+        )}
+      </div>
     </section>
   );
 }
