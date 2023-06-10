@@ -1,6 +1,7 @@
 'use client';
 
-import { useReducer, useState } from 'react';
+import Popup from '@/components/contact/Popup';
+import { FormEvent, useReducer, useState } from 'react';
 
 const initialForm = { email: '', subject: '', message: '' };
 
@@ -33,13 +34,23 @@ function formReducer(state: typeof initialForm, action: ActionType) {
 
 export default function Contact() {
   const [form, dispatch] = useReducer(formReducer, initialForm);
+  const [pop, setPop] = useState(false);
+
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    setPop(true);
+  };
 
   return (
-    <section className='w-full h-full flex flex-col items-center gap-4'>
+    <section
+      className='w-full h-full max-w-prose flex flex-col items-center gap-4 mx-auto'
+      onSubmit={onSubmit}
+    >
       <h1 className='text-3xl font-bold'>Contact me</h1>
       <p className='opacity-50'>info@naver.com</p>
       <h1 className='text-4xl font-bold'>Or Send me an email</h1>
-      <form className='w-full max-w-prose bg-slate-600 px-4 py-6 rounded-lg text-black flex flex-col  gap-2'>
+      <Popup isPop={pop} setPop={setPop} />
+      <form className='w-full bg-slate-600 px-4 py-6 rounded-lg text-black flex flex-col  gap-2'>
         <label>
           <p className='pb-3'>Your Email</p>
           <input
