@@ -1,5 +1,7 @@
+'use client';
 import { Post } from '@/service/posts';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 interface Props {
   post: Post;
@@ -12,9 +14,12 @@ export default function PostCard(props: Props) {
     height,
   } = props;
 
+  const router = useRouter();
+
   return (
     <article
-      className={`flex flex-col items-center w-full h-${height} shadow-md rounded-lg relative`}
+      className={`flex flex-col items-center w-full h-${height} shadow-md rounded-lg relative hover:cursor-pointer`}
+      onClick={() => router.push(`/post-detail/${path}`)}
     >
       <div className='w-full h-4/6 relative'>
         <Image src={`/image/${path}.png`} alt='포스트이미지' fill />

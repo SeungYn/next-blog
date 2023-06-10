@@ -5,12 +5,13 @@ import { getFeaturedPosts, getPosts } from '@/service/posts';
 
 export default async function Home() {
   const data = await getFeaturedPosts();
-  const posts = await getPosts();
+
   return (
     <section>
       <ProfileCard />
       <FeaturedPosts posts={data} />
-      <LikePosts posts={posts} />
+      {/* @ts-expect-error Async Server Component */}
+      <LikePosts />
     </section>
   );
 }

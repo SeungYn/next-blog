@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className=' bg-slate-900 relative bottom-0'>
+    <footer className=' bg-slate-900 relative'>
       <h2 className='text-center text-lg text-white'>
         Don&lsquo;t forget to CODE your DREAM
       </h2>

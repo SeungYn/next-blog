@@ -20,10 +20,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang='ko' className={`${openSans.className} h-screen`}>
-      <body className='h-screen'>
-        <main className='w-full max-w-screen-2xl h-screen mx-auto px-4 relative overflow-auto flex flex-col'>
+      <body className='h-screen  '>
+        <main className='w-full max-w-screen-2xl h-screen mx-auto px-4 relative flex flex-col overflow-auto'>
           <Navbar />
-          {children}
+          <section className='grow'>{children}</section>
+          {/* {children} */}
           <Footer />
         </main>
       </body>
