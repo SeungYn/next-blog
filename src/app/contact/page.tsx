@@ -1,6 +1,7 @@
 'use client';
 
 import Popup from '@/components/contact/Popup';
+import { sendContactEmail } from '@/service/contact';
 import { FormEvent, useReducer, useState } from 'react';
 
 const initialForm = { email: '', subject: '', message: '' };
@@ -38,7 +39,10 @@ export default function Contact() {
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    setPop(true);
+    sendContactEmail(form).then((d) => {
+      console.log(d);
+      setPop(true);
+    });
   };
 
   return (
