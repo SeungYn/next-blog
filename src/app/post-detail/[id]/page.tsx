@@ -7,10 +7,21 @@ import { getPostById, getPosts, getPrevNextPostIndex } from '@/service/posts';
 import PrevNextPostCard from '@/components/posts/PrevNextPostCard';
 import PrevNextPostCardContainer from '@/components/posts/PrevNextPostCardContainer';
 import AdjacentPostCard from '@/components/posts/AdjacentPostCard';
+import { Metadata } from 'next';
 
 interface Props {
   params: {
     id: string;
+  };
+}
+
+export async function generateMetadata({
+  params: { id },
+}: Props): Promise<Metadata> {
+  const data = await getPostById(id);
+  return {
+    title: data.title,
+    description: data.description,
   };
 }
 

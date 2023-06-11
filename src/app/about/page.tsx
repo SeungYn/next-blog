@@ -1,5 +1,6 @@
 import ProfileCard from '@/components/ProfileCard';
 import Description from '@/components/about/Description';
+import { Metadata } from 'next';
 
 const descriptionArr = [
   {
@@ -19,11 +20,16 @@ const descriptionArr = [
   },
 ];
 
+export const metadata: Metadata = {
+  title: 'About Me',
+  description: '소개소개',
+};
+
 export default function About() {
   return (
     <section className='grow'>
       <ProfileCard />
-      <div className='p-12 bg-slate-100 rounded-2xl'>
+      <div className='p-12 bg-slate-100 rounded-2xl '>
         {descriptionArr.map((item) => (
           <Description
             key={item.title}

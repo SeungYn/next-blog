@@ -40,7 +40,7 @@ export default function Contact() {
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     sendContactEmail(form).then((d) => {
-      console.log(d);
+      
       setPop(true);
     });
   };
