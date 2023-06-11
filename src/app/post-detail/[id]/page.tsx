@@ -3,7 +3,12 @@ import path from 'path';
 import { notFound } from 'next/navigation';
 import MarkDownView from '@/components/posts/MarkDownView';
 import Image from 'next/image';
-import { getPostById, getPosts, getPrevNextPostIndex } from '@/service/posts';
+import {
+  getFeaturedPosts,
+  getPostById,
+  getPosts,
+  getPrevNextPostIndex,
+} from '@/service/posts';
 import PrevNextPostCard from '@/components/posts/PrevNextPostCard';
 import PrevNextPostCardContainer from '@/components/posts/PrevNextPostCardContainer';
 import AdjacentPostCard from '@/components/posts/AdjacentPostCard';
@@ -23,6 +28,11 @@ export async function generateMetadata({
     title: data.title,
     description: data.description,
   };
+}
+
+export async function generateStaticParams() {
+  const posts = await getPosts();
+  return posts.map((item) => ({ id: item.path }));
 }
 
 export default async function page({ params: { id } }: Props) {

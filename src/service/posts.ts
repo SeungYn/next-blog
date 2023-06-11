@@ -1,5 +1,6 @@
 import { promises as fs } from 'fs';
 import path from 'path';
+import { cache } from 'react';
 
 export type Post = {
   title: string;
@@ -10,11 +11,20 @@ export type Post = {
   featured: boolean;
 };
 
-export async function getPosts(): Promise<Post[]> {
+// export async function getPosts(): Promise<Post[]> {
+//   console.log('get all posts');
+//   const dataPath = path.join(process.cwd(), 'data', 'posts.json');
+//   const data = await fs.readFile(dataPath, 'utf-8');
+//   return JSON.parse(data);
+// }
+
+export const getPosts = cache(async function getPosts(): Promise<Post[]> {
+  console.log('get all posts');
   const dataPath = path.join(process.cwd(), 'data', 'posts.json');
   const data = await fs.readFile(dataPath, 'utf-8');
   return JSON.parse(data);
-}
+});
+
 export async function getFeaturedPosts(): Promise<Post[]> {
   const data = await getPosts();
   return data.filter((item) => item.featured);
