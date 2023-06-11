@@ -9,6 +9,9 @@ export const metadata: Metadata = {
     absolute: '승윤의 블로그',
   },
   description: '승윤 블로그',
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default async function Home() {
